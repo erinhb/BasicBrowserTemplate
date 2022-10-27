@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var urlEditText: EditText
     lateinit var goButton: Button
     lateinit var webView: WebView
+    lateinit var url: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +22,23 @@ class MainActivity : AppCompatActivity() {
         goButton = findViewById(R.id.goButton)
         webView = findViewById(R.id.webView)
 
+        webView.settings.javaScriptEnabled = true
+        
+        goButton.setOnClickListener{
+            url = urlEditText.text.toString()
+        }
+        
         // Allow your browser to intercept hyperlink clicks
-        webView.webViewClient = WebViewClient()
+        webView.webViewClient = object: WebViewClient(){
+            
+                override fun onPageFinished(view: WebView?, url: String?){
+                    super.onPageFinished(view, url)
+                }
+        }
+        
+        
+        
+    
 
     }
 }
