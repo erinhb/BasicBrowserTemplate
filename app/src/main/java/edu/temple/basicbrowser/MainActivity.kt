@@ -10,7 +10,7 @@ import android.widget.EditText
 class MainActivity : AppCompatActivity() {
 
     lateinit var urlEditText: EditText
-    lateinit var goButton: Button
+    lateinit var goButton: ImageButton
     lateinit var webView: WebView
     lateinit var url: String
 
